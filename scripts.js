@@ -10,24 +10,31 @@ document.addEventListener('DOMContentLoaded', () => {
     let spinCount = 0;
 
     function getRandomResult() {
-        const outcomes = ['WIN', 'LOSE'];
-        const winRate = 20; // 1 win every 20 spins
-        if (spinCount % winRate === 0) {
-            return 'WIN';
-        }
-        return outcomes[Math.floor(Math.random() * outcomes.length)];
+        const symbols = ['🍒', '🍋', '🔔', '⭐', '🍉']; // Example symbols
+        return symbols[Math.floor(Math.random() * symbols.length)];
     }
 
     function spinSlotMachine() {
         spinCount++;
-        window1.textContent = getRandomResult();
-        window2.textContent = getRandomResult();
-        window3.textContent = getRandomResult();
 
-        if (window1.textContent === 'WIN' && window2.textContent === 'WIN' && window3.textContent === 'WIN') {
+        if (spinCount % 20 === 0) {
+            // Ensure a win every 20 spins
+            window1.textContent = 'WIN';
+            window2.textContent = 'WIN';
+            window3.textContent = 'WIN';
             result.textContent = 'You Win!';
         } else {
-            result.textContent = 'You Lose!';
+            // Random results for other spins
+            window1.textContent = getRandomResult();
+            window2.textContent = getRandomResult();
+            window3.textContent = getRandomResult();
+
+            // Check if all windows show the same symbol
+            if (window1.textContent === window2.textContent && window2.textContent === window3.textContent) {
+                result.textContent = 'You Win!';
+            } else {
+                result.textContent = 'You Lose!';
+            }
         }
     }
 
