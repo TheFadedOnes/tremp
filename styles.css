@@ -1,0 +1,104 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: #FACC08 url('images/background.jpg') no-repeat center center fixed;
+    background-size: cover; /* Ensure the background image covers the entire area */
+}
+
+.slot-machine {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1000; /* Ensure it is on top */
+    background: #F7931A;
+    border: 2px solid #000;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.slot-machine-windows {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.slot-machine-window {
+    width: 60px;
+    height: 60px;
+    border: 1px solid #000;
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: bold;
+    overflow: hidden; /* Ensure content doesn't overflow */
+    text-overflow: ellipsis; /* Handle overflow with ellipsis */
+    white-space: nowrap; /* Prevent text wrapping */
+    background-color: #fdfdfb; /* Bitcoin orange background */
+    color: rgb(5, 3, 3); /* White text color for readability */
+}
+
+#spinButton {
+    padding: 5px 10px;
+    margin-top: 10px;
+    cursor: pointer;
+    background-color: #050607;
+    color: white;
+    border: none;
+    border-radius: 3px;
+}
+
+#result {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.landing-page {
+    width: 80%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.buy-button {
+    padding: 10px 20px;
+    font-size: 18px;
+    margin: 20px;
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+    background: #007bff;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.social-media-links {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.social-link {
+    padding: 10px;
+    text-decoration: none;
+    color: white;
+    background: #333;
+    border-radius: 5px;
+    cursor: pointer;
+}
