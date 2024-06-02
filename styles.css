@@ -29,6 +29,25 @@ body, html {
     padding: 20px; /* Optional: Padding for content */
 }
 
+.title {
+    position: absolute;
+    top: 10%;
+    right: -50%; /* Start position outside the right of the box */
+    font-size: 24px;
+    font-weight: bold;
+    color: rgb(5, 3, 3);
+    animation: slideIn 2s forwards;
+}
+
+@keyframes slideIn {
+    0% {
+        right: -50%;
+    }
+    100% {
+        right: 60%;
+    }
+}
+
 .image-container {
     flex: 1;
     display: flex;
