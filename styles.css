@@ -41,10 +41,10 @@ body, html {
 
 @keyframes slideIn {
     0% {
-        right: -50%;
+        right: 1%;
     }
     100% {
-        right: 10%;
+        right: 60%;
     }
 }
 
