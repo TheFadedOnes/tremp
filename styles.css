@@ -35,7 +35,7 @@ body, html {
     right: -50%; /* Start position outside the right of the box */
     font-size: 24px;
     font-weight: bold;
-    color: #333;
+    color: rgb(14, 10, 10);
     animation: slideIn 2s forwards;
 }
 
