@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     const buyButton = document.querySelector('.buy-button');
     const socialLinks = document.querySelectorAll('.social-link');
+    const startButton = document.getElementById('startButton');
+    let animationFrameId;
 
     const buyAudio = new Audio('audio/buy-button.mp3');
     const socialAudio = new Audio('audio/social-media.mp3');
@@ -104,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function gameLoop() {
         draw();
         update();
-        requestAnimationFrame(gameLoop);
+        animationFrameId = requestAnimationFrame(gameLoop);
     }
 
     document.addEventListener('keydown', (event) => {
@@ -120,11 +122,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     ball.image.onload = function() {
-        gameLoop();
+        // Show the start button once the image is loaded
+        startButton.style.display = 'block';
     };
 
+    startButton.addEventListener('click', () => {
+        startButton.style.display = 'none';
+        gameLoop();
+    });
+
     function gameOver() {
-        cancelAnimationFrame(gameLoop);
+        cancelAnimationFrame(animationFrameId);
         document.getElementById('nameInputContainer').style.display = 'block';
     }
 
@@ -155,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ball.speedY = 2;
         score = 0;
         document.getElementById('nameInputContainer').style.display = 'none';
-        gameLoop();
+        startButton.style.display = 'block';
     }
 
     window.onload = displayHighScores;
