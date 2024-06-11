@@ -5,141 +5,80 @@ body, html {
     padding: 0;
     width: 100%;
     height: 100%;
-    overflow: hidden;
     font-family: 'Press Start 2P', cursive; /* Pixelated font */
-    display: flex;
-    justify-content: center;
-    align-items: center;
     text-align: center;
     background-color: #FACC08; /* Set a plain background color for the body */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 .landing-page {
-    width: 80%;
-    height: 80%;
+    width: 100%;
+    height: 100vh; /* Take the full viewport height */
     display: flex;
-    justify-content: space-between; /* Spread children horizontally */
+    justify-content: center;
     align-items: center;
-    background: #FACC08 url('images/background.jpg') no-repeat center center;
-    background-size: contain; /* Ensure the entire image fits inside the box */
+    background: #FACC08;
     border: 2px solid #000; /* Optional: Border for the main content */
     border-radius: 5px; /* Optional: Rounded corners for the main content */
-    position: relative;
     image-rendering: pixelated; /* Pixelated effect for images */
     padding: 20px; /* Optional: Padding for content */
-}
-
-.title {
-    position: absolute;
-    top: 10%;
-    right: -50%; /* Start position outside the right of the box */
-    font-size: 24px;
-    font-weight: bold;
-    color: rgb(14, 10, 10);
-    animation: slideIn 2s forwards;
-}
-
-@keyframes slideIn {
-    0% {
-        right: 1%;
-    }
-    100% {
-        right: 60%;
-    }
 }
 
 .image-container {
     flex: 1;
     display: flex;
-    justify-content: flex-start; /* Align image to the left */
-    align-items: center;
+    justify-content: center; /* Center the image horizontally */
+    align-items: center; /* Center the image vertically */
 }
 
-.social-container {
+.tremp-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px; /* Optional: Rounded corners for the image */
+}
+
+.content {
     flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start; /* Align social media buttons to the left */
+    align-items: flex-start;
+    padding-left: 20px; /* Add padding to the left of the content */
 }
 
-.button-container {
-    flex: 1;
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    color: rgb(14, 10, 10);
+}
+
+.social-media-links {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-end; /* Align "Buy Now" button to the right */
+    flex-direction: column; /* Stack social media buttons vertically */
+    align-items: flex-start; /* Align to the left */
+    gap: 10px;
+    animation: slideIn 2s forwards; /* Slide-in animation for social links */
 }
 
-.slot-machine {
-    background: rgba(255, 255, 255, 0.8); /* Optional: Semi-transparent background */
-    border: 2px solid #000;
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.social-link {
     padding: 10px;
+    text-decoration: none;
+    color: white;
+    background: rgb(10, 8, 8);
     border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    image-rendering: pixelated;
-}
-
-#btcForm {
-    margin-bottom: 10px;
-}
-
-#btcAddress {
-    padding: 5px;
-    margin-right: 5px;
-    border: 1px solid #000;
-    border-radius: 3px;
-}
-
-#submitBtcAddress {
-    padding: 5px 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 3px;
     cursor: pointer;
-}
-
-.slot-machine-windows {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 10px;
-}
-
-.slot-machine-window {
-    width: 60px;
-    height: 60px;
-    border: 1px solid #000;
-    margin: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 18px;
-    font-weight: bold;
-    overflow: hidden; /* Ensure content doesn't overflow */
-    text-overflow: ellipsis; /* Handle overflow with ellipsis */
-    white-space: nowrap; /* Prevent text wrapping */
-    background-color: #F7931A; /* Bitcoin orange background */
-    color: white; /* White text color for readability */
     image-rendering: pixelated;
-}
-
-#spinButton {
-    padding: 5px 10px;
-    margin-top: 10px;
-    cursor: pointer;
-    background-color: #050708;
-    color: white;
-    border: none;
-    border-radius: 3px;
-    image-rendering: pixelated;
-}
-
-#result {
-    margin-top: 10px;
-    font-weight: bold;
 }
 
 .buy-button {
@@ -154,25 +93,43 @@ body, html {
     display: inline-block;
 }
 
-.social-media-links {
+/* Pong game styles */
+.game-section {
+    width: 100%;
     display: flex;
-    flex-direction: column; /* Stack social media buttons vertically */
-    align-items: flex-start; /* Align to the left */
-    gap: 10px;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px; /* Add margin to separate Pong game from Tremp site */
 }
 
-.social-link {
-    padding: 10px;
-    text-decoration: none;
-    color: white;
-    background: rgb(10, 8, 8);
-    border-radius: 5px;
-    cursor: pointer;
-    image-rendering: pixelated;
+.game-title {
+    margin-bottom: 20px;
 }
 
-/* Pixelated effect for the entire page */
-body {
-    transform: scale(1);
-    transform-origin: 0 0;
+.game-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#gameCanvas {
+    border: 1px solid rgb(3, 2, 2);
+}
+
+.scoreboard {
+    margin-top: 20px; /* Add margin to separate scoreboard from canvas */
+}
+
+.scoreboard h2 {
+    margin-top: 0;
+}
+
+.scoreboard ul {
+    list-style: none;
+    padding: 0;
+}
+
+.scoreboard li {
+    margin: 5px 0;
 }
