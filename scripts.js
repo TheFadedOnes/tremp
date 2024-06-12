@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOM fully loaded and parsed');
+
     const buyButton = document.querySelector('.buy-button');
     const socialLinks = document.querySelectorAll('.social-link');
     const startButton = document.getElementById('startButton');
@@ -6,6 +8,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const buyAudio = new Audio('audio/buy-button.mp3');
     const socialAudio = new Audio('audio/social-media.mp3');
+
+    console.log('Audio paths:', {
+        buyAudio: buyAudio.src,
+        socialAudio: socialAudio.src
+    });
 
     buyButton.addEventListener('mouseenter', () => {
         buyAudio.play().catch(error => console.error('Error playing buy audio:', error));
@@ -31,6 +38,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const canvas = document.getElementById('gameCanvas');
     const context = canvas.getContext('2d');
 
+    console.log('Canvas initialized');
+
     canvas.width = 500;
     canvas.height = 500;
 
@@ -45,6 +54,16 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     ball.image.src = 'images/ball.png';
+    console.log('Ball image path:', ball.image.src);
+
+    ball.image.onload = function() {
+        console.log('Ball image loaded');
+        startButton.style.display = 'block';
+    };
+
+    ball.image.onerror = function() {
+        console.error('Failed to load ball image');
+    };
 
     let paddle = {
         x: 10,
@@ -60,15 +79,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function draw() {
         context.clearRect(0, 0, canvas.width, canvas.height);
-
-        // Draw ball
         context.drawImage(ball.image, ball.x, ball.y, ball.width, ball.height);
-
-        // Draw paddle
         context.fillStyle = '#fff';
         context.fillRect(paddle.x, paddle.y, paddle.width, paddle.height);
-
-        // Draw score
         context.font = '20px Arial';
         context.fillText(`Score: ${score}`, canvas.width - 100, 30);
     }
@@ -121,12 +134,8 @@ document.addEventListener('DOMContentLoaded', () => {
         paddle.speedY = 0;
     });
 
-    ball.image.onload = function() {
-        // Show the start button once the image is loaded
-        startButton.style.display = 'block';
-    };
-
     startButton.addEventListener('click', () => {
+        console.log('Start button clicked');
         startButton.style.display = 'none';
         gameLoop();
     });
