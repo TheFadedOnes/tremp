@@ -7,12 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const buyAudio = new Audio('audio/buy-button.mp3');
     const socialAudio = new Audio('audio/social-media.mp3');
 
-    // Add a click listener to the document to handle audio playback
-    document.addEventListener('click', () => {
-        socialAudio.play().catch(error => console.error('Error playing social audio:', error));
-        buyAudio.play().catch(error => console.error('Error playing buy audio:', error));
-    });
-
     buyButton.addEventListener('mouseenter', () => {
         buyAudio.play().catch(error => console.error('Error playing buy audio:', error));
     });
@@ -37,8 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const canvas = document.getElementById('gameCanvas');
     const context = canvas.getContext('2d');
 
-    console.log('Canvas initialized');
-
     canvas.width = 500;
     canvas.height = 500;
 
@@ -53,11 +45,6 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     ball.image.src = 'images/ball.png';
-    ball.image.onload = function() {
-        console.log('Ball image loaded');
-        // Show the start button once the image is loaded
-        startButton.style.display = 'block';
-    };
 
     let paddle = {
         x: 10,
@@ -134,8 +121,12 @@ document.addEventListener('DOMContentLoaded', () => {
         paddle.speedY = 0;
     });
 
+    ball.image.onload = function() {
+        // Show the start button once the image is loaded
+        startButton.style.display = 'block';
+    };
+
     startButton.addEventListener('click', () => {
-        console.log('Start button clicked');
         startButton.style.display = 'none';
         gameLoop();
     });
