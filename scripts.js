@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
         image: new Image()
     };
 
-    ball.image.src = 'images/Ball.png';
+    ball.image.src = 'images/ball.png';
     console.log('Ball image path:', ball.image.src);
 
     ball.image.onload = function() {
